@@ -1,7 +1,33 @@
 <launch>
-    <!-- 地面站节点 -->
-    <node pkg="ground_station" type="ground_station_node" name="ground_station" output="screen">
-        <!-- 设置无人机数量参数 -->
+    <!-- 地面控制节点 -->
+    <node pkg="ground_control" type="ground_control_node" name="ground_control" output="screen">
+        <!-- 无人机数量 -->
         <param name="drone_num" value="3" />
+        
+        <!-- 编队数量 (每个无人机有几个目标点) -->
+        <param name="cmd_num" value="2" />
+        
+        <!-- 目标位置序列 
+             格式: [drone1_target1_x, drone1_target1_y, drone1_target1_z, 
+                     drone1_target2_x, drone1_target2_y, drone1_target2_z,
+                     drone2_target1_x, drone2_target1_y, drone2_target1_z,
+                     drone2_target2_x, drone2_target2_y, drone2_target2_z,
+                     ...] 
+        -->
+        <rosparam param="cmd_pose">
+            [ 
+                # 无人机1的目标点
+                0.0, 0.0, 5.0,   # 目标1
+                10.0, 0.0, 5.0,  # 目标2
+                
+                # 无人机2的目标点
+                0.0, 5.0, 5.0,   # 目标1
+                10.0, 5.0, 5.0,  # 目标2
+                
+                # 无人机3的目标点
+                0.0, -5.0, 5.0,  # 目标1
+                10.0, -5.0, 5.0  # 目标2
+            ]
+        </rosparam>
     </node>
 </launch>
