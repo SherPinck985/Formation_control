@@ -1,0 +1,7 @@
+<launch>
+    <!-- 地面站节点 -->
+    <node pkg="ground_station" type="ground_station_node" name="ground_station" output="screen">
+        <!-- 设置无人机数量参数 -->
+        <param name="drone_num" value="3" />
+    </node>
+</launch>
