@@ -1,12 +1,13 @@
 <launch>
     <!-- 定义无人机编号参数 -->
-    <arg name="drone_id" default="1" doc="UAV identifier (1~N)"/>
+    <arg name="drone_id" default="1"/>
   
     <!-- remap MAVROS namespace 根 -->
     <group ns="uav_$(arg drone_id)">
       <!-- 启动 offboard 控制节点 -->
-      <node pkg="swarm_offboard" type="offb_swarm_node" name="offb_swarm_node" output="screen">
+      <node pkg="air_control" type="air" name="air" output="screen">
         <param name="drone_id" value="$(arg drone_id)"/>
+        <remap from="cmd_pose" to="/uav_$(arg drone_id)/cmd_pose"/>
       </node>
     </group>
   </launch>
