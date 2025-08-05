@@ -1,6 +1,6 @@
 <launch>
     <!-- 地面控制节点 -->
-    <node pkg="ground_control" type="ground_control_node" name="ground_control" output="screen">
+    <node pkg="ground_control" type="ground" name="ground" output="screen">
         <!-- 无人机数量 -->
         <param name="drone_num" value="3" />
         
