@@ -10,6 +10,9 @@ IP:
   self: '*'   # '*' stands for all self IPs
   robot1: 192.168.1.101
   robot2: 192.168.1.102
+  robot3: 192.168.1.102
+  robot4: 192.168.1.102
+  robot5: 192.168.1.102
   test_local: 127.0.0.1 # just for local machine test
 
 ####### Send these ROS messages to remote robots #######
