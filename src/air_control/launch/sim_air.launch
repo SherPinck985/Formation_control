@@ -1,19 +1,15 @@
 <launch>
-  
-    <!-- remap MAVROS namespace 根 -->
     <group ns="uav1">
-      <!-- 启动 offboard 控制节点 -->
-      <node pkg="air_control" type="air" name="air" output="screen">
-        <param name="drone_id" value="1"/>
-        <remap from="cmd_pose" to="/uav1/cmd_pose"/>
-      </node>
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="1"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
     </group>
 
     <group ns="uav2">
-      <!-- 启动 offboard 控制节点 -->
-      <node pkg="air_control" type="air" name="air" output="screen">
-        <param name="drone_id" value="2"/>
-        <remap from="cmd_pose" to="/uav2/cmd_pose"/>
-      </node>
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="2"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
     </group>
-  </launch>
+</launch>

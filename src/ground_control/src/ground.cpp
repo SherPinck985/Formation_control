@@ -120,7 +120,7 @@ class GroundControl {
                 cmd.y = target.y;
                 cmd.z = target.z;
                 cmd_publishers_[id].publish(cmd);
-                ROS_DEBUG("Sent target to drone %d: (%.1f, %.1f, %.1f)", id, cmd.x, cmd.y, cmd.z);
+                // ROS_INFO("Sent target to drone %d: (%.1f, %.1f, %.1f)", id, cmd.x, cmd.y, cmd.z);
             }
         }
     }
@@ -182,7 +182,6 @@ class GroundControl {
         }
 
         ros::Rate rate(10);
-        sendTargets();
         ROS_INFO("Sent initial targets to all drones");
 
         while (ros::ok()) {
@@ -197,7 +196,7 @@ class GroundControl {
                     ROS_INFO("Mission completed! All targets reached.");
                 }
             }
-
+            sendTargets();
             ros::spinOnce();
             rate.sleep();
         }
