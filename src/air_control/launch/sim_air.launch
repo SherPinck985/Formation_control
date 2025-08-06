@@ -12,4 +12,26 @@
             <!-- 删除remap，使用全局话题 -->
         </node>
     </group>
+
+    <group ns="uav3">
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="3"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
+    </group>
+
+    <group ns="uav4">
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="4"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
+    </group>
+
+    <group ns="uav5">
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="5"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
+    </group>
+
 </launch>
