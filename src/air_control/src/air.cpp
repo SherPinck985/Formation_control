@@ -59,6 +59,14 @@ int main(int argc, char** argv) {
     pose.pose.position.y = 0;
     pose.pose.position.z = 2;
 
+    while (ros::ok() && drone_id == 6) {
+        if (new_target_received && target_position.z > 0.5) {
+            break;
+        }
+        ros::spinOnce();
+        rate.sleep();
+    }
+
     // 发送初始设置点
     for (int i = 100; ros::ok() && i > 0; --i) {
         local_pos_pub.publish(pose);
@@ -90,6 +98,7 @@ int main(int argc, char** argv) {
             if (arming_client.call(arm_cmd) &&
                 arm_cmd.response.success) {
                 ROS_INFO("Vehicle armed");
+                break;
             }
             last_request = ros::Time::now();
         }
@@ -108,5 +117,19 @@ int main(int argc, char** argv) {
         rate.sleep();
     }
 
+    while (ros::ok()) {
+        // 更新目标位置
+        if (new_target_received) {
+            pose.pose.position = target_position;
+            new_target_received = false;
+            ROS_INFO("Updating target position for drone %d", drone_id);
+        }
+
+        // 发布位置指令
+        local_pos_pub.publish(pose);
+
+        ros::spinOnce();
+        rate.sleep();
+    }
     return 0;
 }
