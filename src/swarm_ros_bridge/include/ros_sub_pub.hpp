@@ -35,6 +35,14 @@
 #define MSG_TYPE3 "std_msgs/String"
 #define MSG_CLASS3 std_msgs::String
 
+#include <geometry_msgs/PoseStamped.h>
+#define MSG_TYPE4 "geometry_msgs/PoseStamped"
+#define MSG_CLASS4 geometry_msgs::PoseStamped
+
+#include <ground_control/CmdPose.h>
+#define MSG_TYPE5 "ground_control/CmdPose"
+#define MSG_CLASS5 ground_control::CmdPose
+
 // #include <xxx/yy.h>
 // #define MSG_TYPE4 "xxx/yy"
 // #define MSG_CLASS4 xxx::yy

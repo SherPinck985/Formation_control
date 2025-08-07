@@ -13,44 +13,65 @@ IP:
   robot3: 192.168.1.102
   robot4: 192.168.1.102
   robot5: 192.168.1.102
-  test_local: 127.0.0.1 # just for local machine test
 
 ####### Send these ROS messages to remote robots #######
 ## if no send_topics needed, comment all these out
 send_topics:
-- topic_name: /imu # send the messages of this ROS topic
-  msg_type: sensor_msgs/Imu # ROS message type (rosmsg style)
+- topic_name: /uav1/cmd_pose # send the messages of this ROS topic
+  msg_type: ground_control/CmdPose # ROS message type (rosmsg style)
   max_freq: 50 # max sending frequency (Hz) int
   srcIP: self # self IP
   srcPort: 3001 # ports of send_topics should be different
 
-- topic_name: /cmd_vel # send the messages of this ROS topic
-  msg_type: geometry_msgs/Twist # ROS message type (rosmsg style)
+- topic_name: /uav2/cmd_pose # send the messages of this ROS topic
+  msg_type: ground_control/CmdPose # ROS message type (rosmsg style)
   max_freq: 50 # max sending frequency (Hz) int
   srcIP: self # self IP
   srcPort: 3002 # ports of send_topics should be different
 
-- topic_name: /string # send the messages of this ROS topic
-  msg_type: std_msgs/String # ROS message type (rosmsg style)
-  max_freq: 10 # max sending frequency (Hz) int
+- topic_name: /uav3/cmd_pose # send the messages of this ROS topic
+  msg_type: ground_control/CmdPose # ROS message type (rosmsg style)
+  max_freq: 50 # max sending frequency (Hz) int
   srcIP: self # self IP
   srcPort: 3003 # ports of send_topics should be different
+
+- topic_name: /uav4/cmd_pose # send the messages of this ROS topic
+  msg_type: ground_control/CmdPose # ROS message type (rosmsg style)
+  max_freq: 50 # max sending frequency (Hz) int
+  srcIP: self # self IP
+  srcPort: 3004 # ports of send_topics should be different
+
+- topic_name: /uav5/cmd_pose # send the messages of this ROS topic
+  msg_type: ground_control/CmdPose # ROS message type (rosmsg style)
+  max_freq: 50 # max sending frequency (Hz) int
+  srcIP: self # self IP
+  srcPort: 3005 # ports of send_topics should be different
 
 
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
 recv_topics:
-- topic_name: /imu_recv # the received messages will be published in this topic
-  msg_type: sensor_msgs/Imu # ROS message type (rosmsg style)
-  srcIP: test_local # message source IPname
+- topic_name: /uav1/mavros/local_position/pose # the received messages will be published in this topic
+  msg_type: geometry_msgs/PoseStamped # ROS message type (rosmsg style)
+  srcIP: robot1 # message source IPname
   srcPort: 3001 # message source port
 
-- topic_name: /cmd_vel_recv # the received messages will be published in this topic
-  msg_type: geometry_msgs/Twist # ROS message type (rosmsg style)
-  srcIP: test_local # message source IPname
+- topic_name: /uav2/mavros/local_position/pose # the received messages will be published in this topic
+  msg_type: geometry_msgs/PoseStamped # ROS message type (rosmsg style)
+  srcIP: robot2 # message source IPname
   srcPort: 3002 # message source port
 
-- topic_name: /string_recv # the received messages will be published in this topic
-  msg_type: std_msgs/String # ROS message type (rosmsg style)
-  srcIP: test_local # message source IPname
+- topic_name: /uav3/mavros/local_position/pose # the received messages will be published in this topic
+  msg_type: geometry_msgs/PoseStamped # ROS message type (rosmsg style)
+  srcIP: robot3 # message source IPname
   srcPort: 3003 # message source port
+
+- topic_name: /uav4/mavros/local_position/pose # the received messages will be published in this topic
+  msg_type: geometry_msgs/PoseStamped # ROS message type (rosmsg style)
+  srcIP: robot4 # message source IPname
+  srcPort: 3004 # message source port
+
+- topic_name: /uav5/mavros/local_position/pose # the received messages will be published in this topic
+  msg_type: geometry_msgs/PoseStamped # ROS message type (rosmsg style)
+  srcIP: robot5 # message source IPname
+  srcPort: 3005 # message source port
