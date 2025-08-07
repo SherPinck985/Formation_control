@@ -34,4 +34,11 @@
         </node>
     </group>
 
+    <group ns="uav6">
+        <node pkg="air_control" type="air" name="air" output="screen">
+            <param name="drone_id" value="6"/>
+            <!-- 删除remap，使用全局话题 -->
+        </node>
+    </group>
+
 </launch>
